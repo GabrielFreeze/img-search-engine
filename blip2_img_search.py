@@ -36,7 +36,7 @@ def split_files(files:list, n_cpu:int=None):
 
 
 def data_worker(proc_num,  return_dict,
-                key_img:str, key_txt:str,
+                key_img:str,
                 encodings_path:str, encodings:List[Tuple[str,str]]):
 
 
@@ -48,9 +48,8 @@ def data_worker(proc_num,  return_dict,
     #Encode the key image-txt pair
     key_img = Image.open(key_img).convert("RGB")
     key_img = vis_processors["eval"](key_img).unsqueeze(0).to(device)
-    key_txt = txt_processors["eval"](key_txt)
 
-    key_enc = model.extract_features({"image": key_img, "text_input": [key_txt]},mode='image').image_embeds
+    key_enc = model.extract_features({"image": key_img, "text_input": [""]},mode='image').image_embeds
 
     cos = torch.nn.CosineSimilarity(dim=1)
     data = torch.zeros((len(encodings)), dtype=torch.float32,device=device)
@@ -73,7 +72,7 @@ def data_worker(proc_num,  return_dict,
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-def main(chat_folder,key_img,key_txt):   
+def main(chat_folder,key_img):   
     
     n_cpu = 2 #Optimal number seems to be 2
     key_name = key_img.split(os.sep)[-1].split('.')[0]
@@ -92,7 +91,7 @@ def main(chat_folder,key_img,key_txt):
     data = []
 
     jobs = [Process(target=data_worker, args=[i,return_dict,
-                                              key_img,key_txt,
+                                              key_img,
                                               encodings_path,files])
             for i,files in enumerate(batch_files)]
 
@@ -120,8 +119,8 @@ def main(chat_folder,key_img,key_txt):
 if __name__ == '__main__':
 
      #Ensure directory is passed
-    if len(sys.argv) != 4:
-        print(f'{color.RED}Usage:{color.YELLOW} python img_search.py [Chat Folder] [Path to Image] "[Description]"{color.ESC}')
+    if len(sys.argv) != 3:
+        print(f'{color.RED}Usage:{color.YELLOW} python img_search.py [Chat Folder] [Path to Image]{color.ESC}')
         sys.exit(1)
 
     chat_path = os.path.abspath(sys.argv[1])
@@ -136,7 +135,7 @@ if __name__ == '__main__':
         sys.exit(1)
 
     s = time.time()
-    main(sys.argv[1],sys.argv[2],sys.argv[3])
+    main(sys.argv[1],sys.argv[2])
     print(f'{color.GREEN}Finished in {color.YELLOW}{round(time.time()-s,2)}s{color.ESC}')
 
 

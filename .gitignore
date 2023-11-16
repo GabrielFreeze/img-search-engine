@@ -2,3 +2,4 @@ organise.py
 lavis/__pychache__/
 BLIP/checkpoints/model_base_retrieval_coco.pth
 imgs/photos
+imgs/photo_encodings

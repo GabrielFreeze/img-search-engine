@@ -4,4 +4,4 @@ BLIP/checkpoints/model_base_retrieval_coco.pth
 imgs/photos
 imgs/photo_encodings
 *_top_*/
-__pychache__/
+vector_db/*

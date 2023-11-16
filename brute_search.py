@@ -118,9 +118,9 @@ def main(chat_folder,key_img):
 
 if __name__ == '__main__':
 
-     #Ensure directory is passed
+    #Ensure directory is passed
     if len(sys.argv) != 3:
-        print(f'{color.RED}Usage:{color.YELLOW} python img_search.py [Chat Folder] [Path to Image]{color.ESC}')
+        print(f'{color.RED}Usage:{color.YELLOW} python brute_search.py [Folder] [Path to Image]{color.ESC}')
         sys.exit(1)
 
     chat_path = os.path.abspath(sys.argv[1])

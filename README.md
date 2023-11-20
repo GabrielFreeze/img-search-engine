@@ -1,14 +1,14 @@
 # img-search-engine
 
+⚠ README.md WORK IN PROGRESS ⚠
+
 -> Show diagram that explains everything
 
 -> Introduction, what does this code do
 
--> requirements, gpu etc
+-> Requirements
 
 -> Install instructions
--> pip install stuff etc
 
--> usage
+-> Usage
 
--> cite this source or whateva

@@ -5,3 +5,8 @@ imgs/photos
 imgs/photo_encodings
 *_top_*/
 vector_db/*
+
+*.JPEG
+*.png
+*.jpeg
+*.jpg

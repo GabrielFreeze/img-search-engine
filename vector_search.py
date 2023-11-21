@@ -27,7 +27,14 @@ def encode_img(key_img:str):
 
 
 def main(folder:str, key_img:str):
-    vector_db = HNSWVectorDB[EmbImg](workspace=os.path.join('vector_db',folder))
+
+    #Acquire name of vector_db
+    vector_db_name = '_'.join(folder.split(os.sep))
+    if vector_db_name[-1] == '_': vector_db_name = vector_db_name[:-1]
+
+    vector_db = HNSWVectorDB[EmbImg](
+        workspace=os.path.join('vector_db',vector_db_name))
+        
     encodings_path = os.path.join(folder,'photo_encodings')
     cos = torch.nn.CosineSimilarity(dim=0)
 
@@ -36,7 +43,7 @@ def main(folder:str, key_img:str):
     results = vector_db.search(inputs=DocList[EmbImg]([query]), limit=250)
 
     data = [[m.img_name, cos(torch.tensor(m.embedding, device=device),
-                             key_emb).detach()]
+                             key_emb).detach().item()]
              for m in results[0].matches]
 
     #Remove File Extension

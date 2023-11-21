@@ -15,7 +15,12 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 def main(folder:str):
 
-    vector_db = HNSWVectorDB[EmbImg](workspace=os.path.join('vector_db',folder))
+    #Acquire name of vector_db
+    vector_db_name = '_'.join(folder.split(os.sep))
+    if vector_db_name[-1] == '_': vector_db_name = vector_db_name[:-1]
+
+    vector_db = HNSWVectorDB[EmbImg](
+        workspace=os.path.join('vector_db',vector_db_name))
 
     encodings_path = os.path.join(folder,'photo_encodings')
     emb2img = (pd.read_csv(os.path.join(encodings_path,'info.csv'))

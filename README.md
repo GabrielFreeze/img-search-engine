@@ -69,5 +69,5 @@ python img_retriever.py path/to/cat_imgs my_cat 100
 
 After completing all steps, there should be a folder named ```img_top_N``` inside the top-level directory supplied in [Step 0](#step-0---image-directory)
 
-## ⚠ Disclaimer
+## Disclaimer ⚠
 This project is not actively maintained, however you are free to submit pull requests.

@@ -4,7 +4,7 @@
 </p>
 
 ## Introduction
-This code implements a simple yet effective image-search engine that runs entirely on your local machine. Given a key image, the user can search for visually and semantically similair images from thousands of images on cheap consumer-grade hardware in little compute time. The code uses [BLIP-2](https://github.com/salesforce/LAVIS/tree/main/projects/blip2) to encode images and [```vectordb```](https://github.com/jina-ai/vectordb) to organise the resulting embeddings. 
+This code implements a simple yet effective image-search engine that runs entirely on your local machine. Given a key image, the user can search for visually and semantically similair images from thousands of images on cheap consumer-grade hardware in little compute time. The code uses [BLIP-2](https://github.com/salesforce/LAVIS/tree/main/projects/blip2) to encode images and [```vectordb```](https://github.com/jina-ai/vectordb) to organise the resulting embeddings. The branch ```blip1``` contains the deprecated BLIP implementation.
 
 ## Requirements
 <ul>

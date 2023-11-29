@@ -42,7 +42,7 @@ python -c "import torch; print(torch.cuda.is_available())" #True
 ## Usage
 
 ### Step 0 - Image Directory
-Place your images in a folder named ``photos````, inside of another top-level directory of your choosing (eg. ```cat_imgs/photos```).
+Place your images in a folder named ```photos````, inside of another top-level directory of your choosing (eg. ```cat_imgs/photos```).
 
 ### Step 1 - Encode Images
 ```bash

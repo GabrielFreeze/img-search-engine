@@ -57,7 +57,7 @@ python vectorize_encodings.py path/to/cat_imgs
 ### Step 3 - Image-Search 
 ```bash
 #HNSW Search (Recommended)
-python vectore_s.earchpy path/to/cat_imgs path/to/my_cat.jpg
+python vectore_search.py path/to/cat_imgs path/to/my_cat.jpg
 ```
 Alternatively, replace ```vectorize_encodings.py``` with ```brute_search.py``` to perform brute force search.
 
